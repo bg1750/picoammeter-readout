@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Picoammeter Readout</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #1f2328; line-height: 1.6;
+    background: #eceff2; min-height: 100vh;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 48px 20px 72px; }
+  header { text-align: center; margin-bottom: 28px; }
+  h1 { font-size: 2.2rem; }
+  .sub { font-size: 1.05rem; color: #5b636d; margin-top: 8px; }
+  .note {
+    background: #fff; border: 1px solid #d6dbe1; border-radius: 10px;
+    padding: 16px 20px; margin: 24px 0; font-style: italic; color: #3a4048;
+  }
+  .shot { width: 100%; max-width: 620px; display: block; margin: 0 auto;
+          border-radius: 10px; border: 1px solid #d6dbe1; }
+  h2 { margin: 36px 0 12px; color: #1f6f43; font-size: 1.4rem; }
+  ul { padding-left: 22px; }
+  li { margin: 6px 0; color: #3a4048; }
+  pre {
+    background: #1f2328; color: #eceff2; border-radius: 10px;
+    padding: 16px 18px; overflow-x: auto; font-size: 0.95rem;
+  }
+  .btn {
+    display: inline-block; margin-top: 24px; padding: 12px 22px;
+    background: #1f6f43; color: #fff; text-decoration: none; font-weight: 600;
+    border-radius: 10px;
+  }
+  .btn:hover { background: #268a54; }
+  footer { margin-top: 48px; text-align: center; color: #5b636d; font-size: 0.9rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>Picoammeter Readout</h1>
+    <p class="sub">A desktop operator panel for a low-current measurement setup. Python and tkinter.</p>
+  </header>
+
+  <p class="note">This is a simulated stand-in for professional work I can't share publicly.
+  It reuses the same operator panel and the same file-based frontend/backend split, wired to a
+  simulator instead of the real instrument.</p>
+
+  <img class="shot" src="assets/screenshot.png" alt="The readout running against the simulator">
+
+  <h2>What it does</h2>
+  <ul>
+    <li>Large current readout, auto-scaled from fA up to mA, colored by alarm state.</li>
+    <li>State, stability, gain, temperature, overload, alarm, and connection fields.</li>
+    <li>Zero, set gain, autorange, and high/low alarm levels.</li>
+    <li>Optional temperature correction against a reference temperature.</li>
+    <li>A password gate on every settings change.</li>
+    <li>A built-in simulator, so it runs with no hardware attached.</li>
+  </ul>
+
+  <h2>Run it</h2>
+  <p>This is a desktop app, so it runs locally rather than in the browser:</p>
+  <pre>python picoammeter_readout.py</pre>
+
+  <a class="btn" id="repo-link" href="#">View the code on GitHub</a>
+
+  <footer>Built with Python and tkinter.</footer>
+</div>
+
+<script>
+  (function () {
+    var host = location.hostname, path = location.pathname.split('/').filter(Boolean);
+    if (host.endsWith('github.io') && path.length) {
+      document.getElementById('repo-link').href =
+        'https://github.com/' + host.split('.')[0] + '/' + path[0];
+    } else {
+      document.getElementById('repo-link').style.display = 'none';
+    }
+  })();
+</script>
+</body>
+</html>
